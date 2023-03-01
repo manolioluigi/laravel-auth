@@ -7,9 +7,9 @@ use Illuminate\Database\Seeder;
 
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use App\Models\Post;
+use App\Models\Project;
 
-class PostSeeder extends Seeder
+class ProjectSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,11 +21,11 @@ class PostSeeder extends Seeder
         
         for($i=0; $i<10; $i++){
 
-            $newPost = new Post();
-            $newPost->title = $faker->sentence(3);
-            $newPost->content = $faker->text(500);
-            $newPost->slug = Str::slug($newPost->title, '-');
-            $newPost->save();
+            $newProject = new Project();
+            $newProject->title = $faker->sentence(3);
+            $newProject->content = $faker->text(500);
+            $newProject->slug = Str::slug($newProject->title, '-');
+            $newProject->save();
 
         }
 
