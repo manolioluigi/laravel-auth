@@ -68,7 +68,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -80,7 +80,12 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $post)
     {
-        //
+        $form_data = $request->validated();
+        $slug = Post::generateSlug($request->title, '-');
+        $form_data['slug'] = $slug;
+        $post->update($form_data);
+
+        return redirect()->route('admin.posts.index')->with('message', 'Il progetto è stato modificato correttamente');
     }
 
     /**
@@ -91,6 +96,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('message', 'Il post è stato cancellato correttamente');
     }
 }

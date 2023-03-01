@@ -36,6 +36,16 @@
                                     <a href="{{route('admin.posts.show', $post->slug)}}" title="Visualizza progetto" class="btn btn-sm btn-square btn-primary">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                    <a href="{{route('admin.posts.edit', $post->slug)}}" title="Modifica progetto" class="btn btn-sm btn-warning btn-square">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form class="d-inline-block" action="{{route('admin.posts.destroy', $post->slug)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-square btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
