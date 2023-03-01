@@ -32,7 +32,11 @@
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->slug}}</td>
-                                <td>AZIONE</td>
+                                <td>
+                                    <a href="{{route('admin.posts.show', $post->slug)}}" title="Visualizza progetto" class="btn btn-sm btn-square btn-primary">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
